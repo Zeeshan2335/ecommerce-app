@@ -5,15 +5,22 @@ const initialState = {
 };
 
 const reducers = {
-  storeData: (state, action) => {},
+  handleProductData: (state, action) => {
+    state.products = state.products.push(action.payload);
+  },
 };
 
 const products = createSlice({
   name: "Producs",
   initialState,
-  reducers,
+  reducers: {
+    handleProductData: (state, action) => {
+      console.log("aciton :",action);
+      
+    },
+  },
 });
 
-export default products.actions;//export for store
+export default products.actions; //export for store
 
-export const { storeData } = products.reducer;
+export const { handleProductData } = products.reducer;
