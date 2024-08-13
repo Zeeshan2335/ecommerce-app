@@ -15,7 +15,7 @@ const ProductCard = (props) => {
   return (
     <div
       onClick={() => props?.handleWishList(id)}
-      className="shadow-2xl w-1/5 rounded-md m-2 p-2 "
+      className="shadow-2xl md:w-1/5 rounded-md m-2 p-2 "
     >
       <div className="flex justify-center items-center flex-col">
         <img className="h-64" src={img} alt="" width={200} height={200} />

@@ -8,7 +8,7 @@ import {
   TypographyThree,
   TypographyTow,
 } from "../components/Typography/typography.styled";
-import { Button } from "@mui/material";
+import { Button, Rating } from "@mui/material";
 
 const SingleProductDetail = () => {
   const location = useLocation(); // get data from the rout
@@ -19,11 +19,11 @@ const SingleProductDetail = () => {
     <div className="flex flex-col md:flex-row">
       <div className="md:w-1/3  flex overflow-auto">
         {product.images.map((item, index) => (
-          <img src={item} key={index} alt="loading..."  />
+          <img src={item} key={index} alt="loading..." />
         ))}
       </div>
       <div className="md:w-1/3  md:p-3 ">
-        <div className="md:absolute md:left-5 p-1.5 rounded-full shadow-lg" >
+        <div className="md:absolute md:left-5 p-1.5 rounded-full shadow-lg w-10 ">
           <FavoriteIcon sx={{ color: "gray", margin: "2px" }} />
         </div>
         <TypographyOne> Heading </TypographyOne>
@@ -31,9 +31,16 @@ const SingleProductDetail = () => {
         <div className="flex justify-start">
           <TypographyTow> ${product.price} </TypographyTow>
           <TypographyTow className=" ml-4">
-            {" "}
             {product.discountPercentage}%{" "}
           </TypographyTow>
+        </div>
+        <div>
+        <Rating
+          sx={{ color: "green",padding:2 }}
+          name="read-only"
+          value={product.rating}
+          readOnly
+        />
         </div>
         <div className="flex justify-start ">
           <Button
