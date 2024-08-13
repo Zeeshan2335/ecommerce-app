@@ -1,8 +1,6 @@
 import axios from "axios";
 
 const productApi = async (endpoint, method) => {
-    console.log(endpoint, method);
-    
   let data = [];
   try {
     if (method === "get") {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { gray3 } from "../variants";
+import { gray2, gray3 } from "../variants";
 
 // const gray='#c2c2c2';
 // const gray2='#212121';
@@ -23,4 +23,9 @@ export const TypographyFour = styled.h3`
   color: ${gray3};
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 15px;
+`;
+export const TypographyFive = styled.h3`
+  color: ${gray2};
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
 `;

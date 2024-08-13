@@ -42,24 +42,24 @@ export default function SideBar() {
     >
       <List>
         {route.map((text, index) => (
-         <>
-          <Link to={text.path}>
-            <ListItem key={index} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text.name} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-         </>
+          <>
+            <Link key={index} to={text.path}>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text.name} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          </>
         ))}
       </List>
       <Divider />
       <List>
         {["Setting", "Logout"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

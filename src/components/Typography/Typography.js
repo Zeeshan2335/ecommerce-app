@@ -1,4 +1,4 @@
-import { TypographyOne, TypographyThree,TypographyFour } from "./typography.styled";
+import { TypographyOne, TypographyThree,TypographyFour,TypographyFive } from "./typography.styled";
 
-export { TypographyOne,TypographyThree,TypographyFour };
+export { TypographyOne,TypographyThree,TypographyFour,TypographyFive};
 
