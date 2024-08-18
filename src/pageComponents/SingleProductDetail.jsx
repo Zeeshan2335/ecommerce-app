@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
@@ -9,11 +9,25 @@ import {
   TypographyTow,
 } from "../components/Typography/typography.styled";
 import { Button, Rating } from "@mui/material";
+import { makeWishToBuy } from "../state/Slices/products/products.slice";
+import { useState } from "react";
 
 const SingleProductDetail = () => {
+  const [wishFlag, setWishFlag] = useState(false);
+  const dispatch = useDispatch();
+
   const location = useLocation(); // get data from the rout
   const { product } = location.state || {};
-  console.log("product :", product.images);
+
+  const handleWishToBuy = (id, flag) => {
+    const userConfirmed = confirm("Are you add this product to wish list");    
+    if (userConfirmed) {
+      dispatch(makeWishToBuy({ id, flag }));
+      setWishFlag(true);
+    } else {
+      console.log("User canceled the action.");
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -23,8 +37,16 @@ const SingleProductDetail = () => {
         ))}
       </div>
       <div className="md:w-1/3  md:p-3 ">
-        <div className="md:absolute md:left-5 p-1.5 rounded-full shadow-lg w-10 ">
-          <FavoriteIcon sx={{ color: "gray", margin: "2px" }} />
+        <div
+          onClick={() => handleWishToBuy(product.id, true)}
+          className="md:absolute md:left-5 p-1.5 rounded-full shadow-lg w-10 "
+        >
+          <FavoriteIcon
+            sx={{
+              color: product?.isWishToBuy || wishFlag ? "red" : "gray",
+              margin: "2px",
+            }}
+          />
         </div>
         <TypographyOne> Heading </TypographyOne>
         <TypographyFive>{product.description} </TypographyFive>
@@ -35,12 +57,12 @@ const SingleProductDetail = () => {
           </TypographyTow>
         </div>
         <div>
-        <Rating
-          sx={{ color: "green",padding:2 }}
-          name="read-only"
-          value={product.rating}
-          readOnly
-        />
+          <Rating
+            sx={{ color: "green", padding: 2 }}
+            name="read-only"
+            value={product.rating}
+            readOnly
+          />
         </div>
         <div className="flex justify-start ">
           <Button

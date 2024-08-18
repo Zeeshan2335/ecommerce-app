@@ -11,9 +11,17 @@ const products = createSlice({
     handleProductData: (state, action) => {
       state.products = action.payload;
     },
+    makeWishToBuy: (state, action) => {
+      console.log("action :", action.payload);
+      state.products.map((item, index) =>
+        item.id === action.payload.id
+          ? (item.isWishToBuy = action.payload.flag)
+          : item
+      );
+    },
   },
 });
 
 export default products.reducer; //export for store
 
-export const { handleProductData } = products.actions;
+export const { handleProductData, makeWishToBuy } = products.actions;
