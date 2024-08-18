@@ -81,8 +81,12 @@ const AddToCard = () => {
     dispatch(handleRemoveCards(id));
   };
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      {data.length <= 0 && <TypographyTow> ADD ITEMS </TypographyTow>}
+    <div>
+      {data.length <= 0 && (
+        <div className="min-h-screen flex justify-center items-center">
+          <TypographyTow> ADD ITEMS </TypographyTow>
+        </div>
+      )}
       {data &&
         data.map((item) => (
           <AddToCardContain
