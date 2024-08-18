@@ -18,9 +18,11 @@ const addToCard = createSlice({
       console.log("findItem :", findItem);
     },
     handleRemoveCards: (state, action) => {
-      state.AddedCards = state.AddedCards.filter(
-        (item) => item.id !== action.payload.id
+      const filtData = state.AddedCards.filter(
+        (item) => item.id != action.payload
       );
+      console.log("filtData :", filtData);
+      state.AddedCards = filtData;
     },
   },
 });

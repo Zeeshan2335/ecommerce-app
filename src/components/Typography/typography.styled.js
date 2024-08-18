@@ -5,7 +5,7 @@ import { gray2, gray3 } from "../variants";
 // const gray2='#212121';
 
 export const TypographyOne = styled.h1`
-  color: purple;
+  color: #2A2A2A;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size:35px;
 `;
