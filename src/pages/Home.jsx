@@ -46,7 +46,7 @@ const Home = () => {
       <h1>Home </h1>
 
       <div className="flex flex-wrap  w-full justify-center gap-4">
-        {productData.map((item, index) => (
+        {productData?.map((item, index) => (
           <ProductCard
             key={index}
             data={item}
