@@ -9,6 +9,7 @@ import {
 import { Button, Rating } from "@mui/material";
 import { makeWishToBuy } from "../state/Slices/products/products.slice";
 import { useState } from "react";
+import { handleAddCards } from "../state/Slices/products/addToCard.slice";
 
 const SingleProductDetail = () => {
   const [wishFlag, setWishFlag] = useState(false);
@@ -18,7 +19,7 @@ const SingleProductDetail = () => {
   const { product } = location.state || {};
 
   const handleWishToBuy = (id, flag) => {
-    const userConfirmed = confirm("Are you add this product to wish list");    
+    const userConfirmed = confirm("Are you add this product to wish list");
     if (userConfirmed) {
       dispatch(makeWishToBuy({ id, flag }));
       setWishFlag(true);
@@ -26,7 +27,10 @@ const SingleProductDetail = () => {
       console.log("User canceled the action.");
     }
   };
-
+  const handleAddToCards = (data) => {
+    console.log("data :", data);
+    dispatch(handleAddCards(data));
+  };
   return (
     <div className="flex flex-col md:flex-row">
       <div className="md:w-1/3  flex overflow-auto">
@@ -74,6 +78,7 @@ const SingleProductDetail = () => {
               },
             }}
             variant="contained"
+            onClick={() => handleAddToCards(product)}
           >
             Add to Card
           </Button>

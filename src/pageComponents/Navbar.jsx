@@ -2,12 +2,15 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import SearchIcon from "@mui/icons-material/Search";
 import SideBar from "./SideBar";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Badge } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,11 +55,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const addToCardsItems = useSelector((state) => state.addToCards.AddedCards);
+  console.log("addToCardsItems", addToCardsItems);
+
+  const goToAddtoCard = () => {
+    navigate("/addtocard");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
+        <Toolbar className="w-full flex justify-between">
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -65,27 +75,35 @@ export default function Navbar() {
           >
             <MenuIcon />
          
-          </IconButton>
-          <Typography
+          </IconButton> */}
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             MUI
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <SideBar />
+          </Typography> */}
+          <div className="flex">
+            <SideBar />
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </div>
+          <Badge
+            onClick={goToAddtoCard}
+            badgeContent={addToCardsItems?.length}
+            color="error"
+          >
+            <ShoppingCartIcon sx={{ color: "black" }} />
+          </Badge>
         </Toolbar>
-      
       </AppBar>
     </Box>
   );
