@@ -1,11 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   TypographyFive,
-  TypographyFour,
   TypographyOne,
-  TypographyThree,
   TypographyTow,
 } from "../components/Typography/typography.styled";
 import { Button, Rating } from "@mui/material";

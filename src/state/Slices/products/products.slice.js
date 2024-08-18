@@ -12,8 +12,7 @@ const products = createSlice({
       state.products = action.payload;
     },
     makeWishToBuy: (state, action) => {
-      console.log("action :", action.payload);
-      state.products.map((item, index) =>
+      state.products.map((item) =>
         item.id === action.payload.id
           ? (item.isWishToBuy = action.payload.flag)
           : item
