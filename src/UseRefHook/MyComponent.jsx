@@ -15,7 +15,7 @@ function MyComponent() {
 
   const handleClick = () => {
     if (containerRef.current) {
-      const newDiv = document.createElement("h1");
+      const newDiv = document.createElement("div");
       newDiv.style.width = "200px";
       newDiv.style.height = "200px";
       newDiv.style.backgroundColor = "yellow";

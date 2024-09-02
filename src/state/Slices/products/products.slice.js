@@ -1,7 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+import { productApi } from "../../../apis/productApi";
+
+// fetch api using async thunk
+export const fetchProducts = createAsyncThunk(
+  "product/fetchItmes",
+  async () => {
+    const response = await productApi("products", "get");
+    return response;
+  }
+);
 
 const initialState = {
   products: [],
+  loading: false,
+  error: "",
 };
 
 const products = createSlice({
@@ -19,7 +32,24 @@ const products = createSlice({
       );
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.products = action.payload?.data?.products;
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Somethig went wrong!!";
+      });
+  },
 });
+
+export const getLoadingFlag = (state) => state?.product?.loading;
+export const getProductItems = (state) => state?.product?.products;
 
 export default products.reducer; //export for store
 

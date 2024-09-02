@@ -7,7 +7,9 @@ import {
 } from "../components/Typography/typography.styled";
 
 const ProductCard = (props) => {
+  
   const img = props.data.images[0];
+
   const id = props.data.id;
   const description = props?.data?.description;
   const title = props?.data?.title;

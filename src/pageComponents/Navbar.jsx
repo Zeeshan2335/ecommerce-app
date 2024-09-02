@@ -11,6 +11,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { addToCardItems } from "../state/Slices/products/addToCard.slice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,8 +57,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const addToCardsItems = useSelector((state) => state.addToCards.AddedCards);
-  console.log("addToCardsItems", addToCardsItems);
+  const addToCardsItems = useSelector(addToCardItems);
+
 
   const goToAddtoCard = () => {
     navigate("/addtocard");

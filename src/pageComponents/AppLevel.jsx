@@ -10,7 +10,7 @@ const AppLevel = () => {
     age: 25,
     city: "Hyderabad",
   });
-  console.log("userData :", userData);
+
 
   const handleData = (e) => {
     let name = e.target.name;

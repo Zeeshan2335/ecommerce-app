@@ -7,8 +7,15 @@ import About from "./pages/About";
 import WishList from "./pages/WishList";
 import SignalProductDetail from "./pageComponents/SingleProductDetail";
 import AddToCard from "./pages/AddToCard";
+import { fetchProducts } from "./state/Slices/products/products.slice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <div>
       <Router>

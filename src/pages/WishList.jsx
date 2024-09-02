@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import ProductCard from "../pageComponents/ProductCard";
 import { useNavigate } from "react-router-dom";
 import { TypographyThree } from "../components/Typography/typography.styled";
+import { getProductItems } from "../state/Slices/products/products.slice";
 
 const WishList = () => {
   const [wishProductList, setWishProductList] = useState([]);
   const navigate = useNavigate();
-  const allProducts = useSelector((state) => state.product.products);
+  const allProducts = useSelector(getProductItems);
 
   useEffect(() => {
     if (allProducts) {

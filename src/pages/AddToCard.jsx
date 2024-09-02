@@ -6,7 +6,7 @@ import {
 } from "../components/Typography/typography.styled";
 
 import { Button, Card, CardContent, Grid, Rating } from "@mui/material";
-import { handleRemoveCards } from "../state/Slices/products/addToCard.slice";
+import { addToCardItems, handleRemoveCards } from "../state/Slices/products/addToCard.slice";
 
 const AddToCardContain = (props) => {
   const {
@@ -73,7 +73,7 @@ const AddToCardContain = (props) => {
 };
 
 const AddToCard = () => {
-  const data = useSelector((state) => state.addToCards.AddedCards);
+  const data = useSelector(addToCardItems);
   const dispatch = useDispatch();
   const removeFromAddToCard = (id) => {
     console.log(id);

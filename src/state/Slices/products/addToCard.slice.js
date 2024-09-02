@@ -27,6 +27,8 @@ const addToCard = createSlice({
   },
 });
 
+export const addToCardItems = (state) => state.addToCards.AddedCards;
+
 export const { handleAddCards, handleRemoveCards } = addToCard.actions; // export for all component
 
 export default addToCard.reducer; // export for binding store

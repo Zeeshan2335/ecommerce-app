@@ -42,7 +42,7 @@ export default function SideBar() {
     >
       <List>
         {route.map((text, index) => (
-          <>
+          
             <Link key={index} to={text.path}>
               <ListItem disablePadding>
                 <ListItemButton>
@@ -53,7 +53,7 @@ export default function SideBar() {
                 </ListItemButton>
               </ListItem>
             </Link>
-          </>
+          
         ))}
       </List>
       <Divider />
